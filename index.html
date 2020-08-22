@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Calc Hero</title>
+    <link rel="stylesheet" href="index.css">
+
+    <script>
+        const ipc = require('electron').ipcRenderer
+        let nodeRequirePath = ipc.sendSync('getRequirePath') + 'node_modules/';
+        window.$ = window.jQuery = require(nodeRequirePath + 'jquery');
+        const moment = require(nodeRequirePath + 'moment');
+    </script>
+    <script src="menu.js"></script>
+
+</head>
+
+<body>
+
+    <div id="mainWindow">
+        <span class="display"><span class="displayDigits">0</span><span class="smallDisplay"></span></span>
+        <span data-action="AC" class="button dgrey"><span>AC</span></span>
+        <span data-action="+/-" class="button dgrey"><span>+/-</span></span>
+        <span data-action="%" class="button dgrey"><span>%</span></span>
+        <span data-operation="/" class="button orange bigFont"><span>&#x00F7;</span></span>
+
+        <span data-value="7" class="button lgrey"><span>7</span></span>
+        <span data-value="8" class="button lgrey"><span>8</span></span>
+        <span data-value="9" class="button lgrey"><span>9</span></span>
+        <span data-operation="*" class="button orange biggerFont"><span>x</span></span>
+
+        <span data-value="4" class="button lgrey"><span>4</span></span>
+        <span data-value="5" class="button lgrey"><span>5</span></span>
+        <span data-value="6" class="button lgrey"><span>6</span></span>
+        <span data-operation="-" class="button orange biggerFont"><span>-</span></span>
+
+        <span data-value="1" class="button lgrey"><span>1</span></span>
+        <span data-value="2" class="button lgrey"><span>2</span></span>
+        <span data-value="3" class="button lgrey"><span>3</span></span>
+        <span data-operation="+" class="button orange biggerFont"><span>+</span></span>
+
+        <span data-value="0" class="button lgrey double-wide"><span>0</span></span>
+        <span data-value="." class="button lgrey"><span>.</span></span>
+        <span data-operation="=" class="button orange biggerFont"><span>=</span></span>
+
+    </div>
+
+</body>
+
+</html>
