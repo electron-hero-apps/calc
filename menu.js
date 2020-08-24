@@ -16,15 +16,19 @@ $(document).on('keypress', function (event) {
     	switch (event.which) {
     		case 43:
     			operation = '+';
+                $('*[data-operation="+"]').addClass('activeOperation');
     			break;
     		case 45:
     			operation = '-';
+                $('*[data-operation="-"]').addClass('activeOperation');
     			break;
     		case 42:
     			operation = '*';
+                $('*[data-operation="*"]').addClass('activeOperation');
     			break;
     		case 47:
     			operation = '/';
+                $('*[data-operation="/"]').addClass('activeOperation');
     			break;
     	}
         handleOperationNotEqual();
@@ -52,7 +56,8 @@ function handlePressEqual() {
     var val1 = parseFloat($('.smallDisplay').html());
     var val2 = parseFloat($('.displayDigits').html());
     $('.displayDigits').html(eval(val1 + lastOperation + val2));
-    $('.smallDisplay').html('')
+    $('.smallDisplay').html('');
+    $('*[data-operation]').removeClass('activeOperation');
 }
 
 function handleOperationNotEqual() {

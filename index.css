@@ -104,3 +104,8 @@ BODY {
 .button-down {
     background-color: #888;
 }
+
+.activeOperation {
+    outline: 3px solid #fff;
+    outline-offset: -3px;
+}
