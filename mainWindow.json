@@ -5,6 +5,7 @@
         "nodeIntegration": true
     },
     "frame": true,
+    "maximizable": false,
     "titleBarStyle": "hidden"
 
 }
