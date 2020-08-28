@@ -2,7 +2,15 @@ var displayInfo = '';
 var operation = '';
 var lastOperation = '';
 
+function showClick(selector) {
+    $(selector).addClass('button-down')
+    setTimeout(function(selector){
+        $(selector).removeClass('button-down')
+    },100, selector)
+}
+
 $(document).on('keypress', function (event) {
+
     if ( event.which == 13 ) {
         console.log('here in equal');
          handlePressEqual();
@@ -17,6 +25,7 @@ $(document).on('keypress', function (event) {
     		case 43:
     			operation = '+';
                 $('*[data-operation="+"]').addClass('activeOperation');
+                showClick('*[data-operation="+"]');
     			break;
     		case 45:
     			operation = '-';
@@ -38,6 +47,7 @@ $(document).on('keypress', function (event) {
     var val = parseInt(event.which);
     if (val <= 57 && val >= 48) {
         val = val - 48;
+        showClick('*[data-value="' + val + '"]')
 
         if (displayInfo === '0') {
             displayInfo = val;
@@ -53,6 +63,7 @@ $(document).on('mousedown', '.button', function () {
 });
 
 function handlePressEqual() {
+    showClick('*[data-operation="="]')
     var val1 = parseFloat($('.smallDisplay').html());
     var val2 = parseFloat($('.displayDigits').html());
     $('.displayDigits').html(eval(val1 + lastOperation + val2));
@@ -68,6 +79,7 @@ function handleOperationNotEqual() {
 }
 
 function handleAC() {
+    showClick('*[data-action="AC"]')
     displayInfo = '0'
     lastOperation = '';
     $('.displayDigits').html(displayInfo);
